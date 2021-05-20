@@ -38,6 +38,8 @@ def connected_group(game, player, visited_area):
     """Search for all the connected stones of the same player"""
     positions = []
     neighbours = []
+    # Flag to stop the double for
+    stop = False
     for x in range(tourney.SIZE):
         for y in range(tourney.SIZE):
             if visited_area[x][y]:
@@ -50,7 +52,11 @@ def connected_group(game, player, visited_area):
                 visited_area[x][y] = True
                 positions.append((x, y))
                 neighbours += list(game.neighbour(x, y))
+                stop = True
+            if stop:
                 break
+        if stop:
+            break
 
     # No player found on the board
     if not positions:
