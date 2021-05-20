@@ -467,3 +467,113 @@ rush_player vs random_player (Winner: random_player)
 rush_player vs random_player (Winner: rush_player) 
 rush_player vs random_player (Winner: rush_player) 
 rush_player vs random_player (Winner: random_player) 
+===============
+Tourney
+===============
+random_player vs rush_player (Winner: random_player) 
+random_player vs rush_player (Winner: random_player) 
+random_player vs rush_player (Winner: rush_player) 
+random_player vs rush_player (Winner: rush_player) 
+rush_player vs random_player (Winner: rush_player) 
+rush_player vs random_player (Winner: rush_player) 
+rush_player vs random_player (Winner: random_player) 
+rush_player vs random_player (Winner: rush_player) 
+random_player vs gelin_player (Winner: random_player) 
+random_player vs gelin_player (Winner: gelin_player) 
+random_player vs gelin_player (Winner: random_player) 
+random_player vs gelin_player (Winner: random_player) 
+gelin_player vs random_player (Winner: gelin_player) 
+gelin_player vs random_player (Winner: gelin_player) 
+gelin_player vs random_player (Winner: gelin_player) 
+gelin_player vs random_player (Winner: gelin_player) 
+rush_player vs gelin_player (Winner: gelin_player) 
+rush_player vs gelin_player (Winner: gelin_player) 
+rush_player vs gelin_player (Winner: gelin_player) 
+rush_player vs gelin_player (Winner: gelin_player) 
+gelin_player vs rush_player (Winner: rush_player) 
+gelin_player vs rush_player (Winner: rush_player) 
+gelin_player vs rush_player (Winner: rush_player) 
+gelin_player vs rush_player (Winner: rush_player) 
+
+Ranking:
+rush_player 9
+gelin_player 9
+random_player 6
+
+===============
+Tourney
+===============
+random_player vs rush_player (Winner: random_player) 
+random_player vs rush_player (Winner: rush_player) 
+random_player vs rush_player (Winner: random_player) 
+random_player vs rush_player (Winner: random_player) 
+rush_player vs random_player (Winner: rush_player) 
+rush_player vs random_player (Winner: rush_player) 
+rush_player vs random_player (Winner: rush_player) 
+rush_player vs random_player (Winner: rush_player) 
+random_player vs gelin_player (Winner: random_player) 
+random_player vs gelin_player (Winner: random_player) 
+random_player vs gelin_player (Winner: random_player) 
+random_player vs gelin_player (Winner: gelin_player) 
+gelin_player vs random_player (Winner: random_player) 
+gelin_player vs random_player (Winner: gelin_player) 
+gelin_player vs random_player (Winner: random_player) 
+gelin_player vs random_player (Winner: random_player) 
+rush_player vs gelin_player (Winner: gelin_player) 
+rush_player vs gelin_player (Winner: gelin_player) 
+rush_player vs gelin_player (Winner: gelin_player) 
+rush_player vs gelin_player (Winner: gelin_player) 
+gelin_player vs rush_player (Winner: rush_player) 
+gelin_player vs rush_player (Winner: rush_player) 
+gelin_player vs rush_player (Winner: rush_player) 
+gelin_player vs rush_player (Winner: rush_player) 
+
+Ranking:
+rush_player 9
+random_player 9
+gelin_player 6
+
+===============
+Tourney
+===============
+random_player vs rush_player (Winner: random_player) 
+random_player vs rush_player (Winner: rush_player) 
+random_player vs rush_player (Winner: random_player) 
+random_player vs rush_player (Winner: random_player) 
+rush_player vs random_player (Winner: rush_player) 
+rush_player vs random_player (Winner: rush_player) 
+rush_player vs random_player (Winner: rush_player) 
+rush_player vs random_player (Winner: rush_player) 
+random_player vs gelin_player (Winner: random_player) 
+random_player vs gelin_player (Winner: gelin_player) 
+random_player vs gelin_player (Winner: gelin_player) 
+random_player vs gelin_player (Winner: random_player) 
+gelin_player vs random_player (Winner: gelin_player) 
+gelin_player vs random_player (Winner: gelin_player) 
+gelin_player vs random_player (Winner: random_player) 
+gelin_player vs random_player (Winner: gelin_player) 
+rush_player vs gelin_player (Winner: gelin_player) 
+rush_player vs gelin_player (Winner: gelin_player) 
+rush_player vs gelin_player (Winner: gelin_player) 
+rush_player vs gelin_player (Winner: gelin_player) 
+gelin_player vs rush_player (Winner: rush_player) 
+gelin_player vs rush_player (Winner: rush_player) 
+gelin_player vs rush_player (Winner: rush_player) 
+gelin_player vs rush_player (Winner: rush_player) 
+
+Ranking:
+rush_player 9
+gelin_player 9
+random_player 6
+
+===============
+Tourney
+===============
+random_player vs rush_player (Winner: random_player) 
+random_player vs rush_player (Winner: random_player) 
+random_player vs rush_player (Winner: rush_player) 
+random_player vs rush_player (Winner: random_player) 
+rush_player vs random_player (Winner: random_player) 
+rush_player vs random_player (Winner: rush_player) 
+rush_player vs random_player (Winner: rush_player) 
+rush_player vs random_player (Winner: rush_player) 

@@ -7,6 +7,8 @@
 from game_logic import *
 from minimax import minimax
 
+from groups import Groups
+
 # game_logic
 #
 #   EMPTY
@@ -46,4 +48,12 @@ def moves(game, player):
 
 
 def heuristic(game, player):
-    return 0
+    """
+    Heuristic Based on how much distance from one side to the other
+    the player has covered.
+    """
+    enemy = 'B' if player == 'W' else 'W'
+    player_groups = Groups(game, player)
+    enemy_groups = Groups(game, enemy)
+    result = player_groups.length - enemy_groups.length
+    return result

@@ -3,8 +3,8 @@
 import tourney
 from group import connected_group
 
-# Testing the Code:
-from game_logic import Game
+# # Testing the Code:
+# from game_logic import Game
 
 
 class Groups:
@@ -45,20 +45,20 @@ class Groups:
         return 0
 
 
-if __name__ == '__main__':
-    game4 = Game(4)
-    game4.board[1][0] = 'B'
-    game4.board[0][1] = 'B'
-    game4.board[3][0] = 'B'
-    game4.board[2][1] = 'B'
-    game4.board[1][2] = 'B'
-    game4.board[0][3] = 'B'
-    game4.board[3][2] = 'B'
-    game4.board[2][3] = 'B'
-    game4.board[3][3] = 'B'
-
-    the_groups = Groups(game4, 'W')
-    print(the_groups.groups)
-    print(the_groups.length)
+# if __name__ == '__main__':
+#     game4 = Game(4)
+#     game4.board[1][0] = 'B'
+#     game4.board[0][1] = 'B'
+#     game4.board[3][0] = 'B'
+#     game4.board[2][1] = 'B'
+#     game4.board[1][2] = 'B'
+#     game4.board[0][3] = 'B'
+#     game4.board[3][2] = 'B'
+#     game4.board[2][3] = 'B'
+#     game4.board[3][3] = 'B'
+#
+#     the_groups = Groups(game4, 'W')
+#     print(the_groups.groups)
+#     print(the_groups.length)
 
 
