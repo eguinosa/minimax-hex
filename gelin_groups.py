@@ -42,7 +42,7 @@ class Groups:
             max_length = max_group.length
             return max_group, max_length
         # No groups found:
-        return 0
+        return None, None
 
 
 if __name__ == '__main__':

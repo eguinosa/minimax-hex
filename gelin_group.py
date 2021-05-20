@@ -3,7 +3,7 @@
 class Group:
     """Class to represent a group of stone with the same color"""
 
-    def __init__(self, positions, game, player):
+    def __init__(self, game, player, positions):
         """
         Save the location of the stones of the group, the board and the player.
         Look how many rows or columns covers, to see how close to winning is the
@@ -80,5 +80,5 @@ def connected_group(game, player, visited_area):
         neighbours += list(game.neighbour(x, y))
 
     found_group = True
-    result_group = Group(positions, game, player)
+    result_group = Group(game, player, positions)
     return found_group, result_group
