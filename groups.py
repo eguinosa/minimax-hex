@@ -1,97 +1,64 @@
 # Gelin Eguinosa Rosique
 
 import tourney
+from group import connected_group
 
 # Testing the Code:
 from game_logic import Game
 
-class Group:
-    """Class to represent a group of stone with the same color"""
 
-    def __init__(self, positions, game, player):
-        """Save the location of the stones of the group, the board and the player."""
-        self.positions = positions
+class Groups:
+    """
+    Class to control all the different groups of stones on the map for one player.
+    """
+
+    def __init__(self, game, player):
+        """
+        Search the map for all the stones of the player and organize them in groups,
+        where all the stones in a group are connected.
+        """
         self.game = game
         self.player = player
+        self.groups = self.__search_groups()
+        self.length = self.__length()
 
-    def length(self):
-        """
-        Look for how many of the rows ('B' player) or columns ('A' player) does this group
-        covers, so to know how close is the player to win the game. If the player has
-        covered all the rows or columns in a connected group, the player wins the game.
-        :return: the number of columns or rows the group covers.
-        """
-        if self.player == 'W':
-            y_min = min(self.positions, key=lambda pos: pos[1])
-            y_max = max(self.positions, key=lambda pos: pos[1])
-            y_length = y_max[1] - y_min[1] + 1
-            return y_length
-
-        # self.player == 'B'
-        x_min = min(self.positions, key=lambda pos: pos[0])
-        x_max = max(self.positions, key=lambda pos: pos[0])
-        x_length = x_max[0] - x_min[0] + 1
-        return x_length
-
-
-def connected_group(game, player, visited_area):
-    """Search for all the connected stones of the same player"""
-    positions = []
-    neighbours = []
-    # Flag to stop the double for
-    stop = False
-    for x in range(tourney.SIZE):
-        for y in range(tourney.SIZE):
-            if visited_area[x][y]:
-                continue
-            elif game[x, y] != player:
-                visited_area[x][y] = True
-                continue
+    def __search_groups(self):
+        """Looks in the map to form the groups of the stones the player has."""
+        groups = []
+        search_map = [[False] * tourney.SIZE for _ in range(tourney.SIZE)]
+        # Flag to continue looking for groups in the map:
+        continue_search = True
+        while continue_search:
+            group_found, result_group = connected_group(self.game, self.player, search_map)
+            if group_found:
+                groups.append(result_group)
             else:
-                # game[x, y] == player and not visited_area[x][y]:
-                visited_area[x][y] = True
-                positions.append((x, y))
-                neighbours += list(game.neighbour(x, y))
-                stop = True
-            if stop:
-                break
-        if stop:
-            break
+                continue_search = False
+        return groups
 
-    # No player found on the board
-    if not positions:
-        found_group = False
-        return found_group, None
-
-    # Search for all the positions of the player connected to the one in group
-    while neighbours:
-        x, y = neighbours.pop(0)
-        if visited_area[x][y]:
-            continue
-        elif game[x, y] != player:
-            visited_area[x][y] = True
-            continue
-        # game[x, y] == player and not visited_area[x][y]:
-        visited_area[x][y] = True
-        positions.append((x, y))
-        neighbours += list(game.neighbour(x, y))
-
-    found_group = True
-    group = Group(positions, game, player)
-    return found_group, group
+    def __length(self):
+        if self.groups:
+            max_group = max(self.groups, key=lambda x: x.length)
+            max_length = max_group.length
+            return max_length
+        # No groups found:
+        return 0
 
 
 if __name__ == '__main__':
     game4 = Game(4)
-    game4.board[2][0] = 'W'
-    game4.board[2][1] = 'W'
-    game4.board[1][2] = 'W'
-    game4.board[0][3] = 'W'
-    game4.board[2][3] = 'W'
-    player = 'W'
-    vis_area = [[False] * 4 for _ in range(4)]
-    result, group = connected_group(game4, player, vis_area)
-    print(result)
-    length = group.length()
-    print(length)
+    game4.board[1][0] = 'B'
+    game4.board[0][1] = 'B'
+    game4.board[3][0] = 'B'
+    game4.board[2][1] = 'B'
+    game4.board[1][2] = 'B'
+    game4.board[0][3] = 'B'
+    game4.board[3][2] = 'B'
+    game4.board[2][3] = 'B'
+    game4.board[3][3] = 'B'
+
+    the_groups = Groups(game4, 'W')
+    print(the_groups.groups)
+    print(the_groups.length)
+
 
