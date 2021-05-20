@@ -18,9 +18,16 @@ class Groups:
         self.game = game
         self.player = player
         self.groups = self.__search_groups()
-        max_group, max_length = self.__length()
+        max_group, max_length = self.__max_length_group()
         self.max_group = max_group
         self.max_length = max_length
+
+    def empty_neighbours(self):
+        if self.max_group:
+            result = self.max_group.empty_neighbours()
+        else:  # self.max_group == None
+            result = []
+        return result
 
     def __search_groups(self):
         """Looks in the map to form the groups of the stones the player has."""
@@ -36,7 +43,7 @@ class Groups:
                 continue_search = False
         return groups
 
-    def __length(self):
+    def __max_length_group(self):
         if self.groups:
             max_group = max(self.groups, key=lambda x: x.length)
             max_length = max_group.length
@@ -63,5 +70,6 @@ if __name__ == '__main__':
     group2 = the_groups.groups[2]
     neigh0 = group0.empty_neighbours()
     neigh2 = group2.empty_neighbours()
+    neighbours = the_groups.empty_neighbours()
     print(the_groups.groups)
     print(the_groups.max_length)
