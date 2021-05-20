@@ -1,17 +1,21 @@
 # Gelin Eguinosa Rosique
 
-import tourney
-
-
 class Group:
     """Class to represent a group of stone with the same color"""
 
     def __init__(self, positions, game, player):
-        """Save the location of the stones of the group, the board and the player."""
+        """
+        Save the location of the stones of the group, the board and the player.
+        Look how many rows or columns covers, to see how close to winning is the
+        player.
+        """
         self.positions = positions
         self.game = game
         self.player = player
-        self.min_pos, self.max_pos, self.length = self.__length()
+        min_pos, max_pos, group_length = self.__length()
+        self.min_pos = min_pos
+        self.max_pos = max_pos
+        self.length = group_length
 
     def __length(self):
         """
@@ -39,8 +43,8 @@ def connected_group(game, player, visited_area):
     neighbours = []
     # Flag to stop the double for
     stop = False
-    for x in range(tourney.SIZE):
-        for y in range(tourney.SIZE):
+    for x in range(game.size):
+        for y in range(game.size):
             if visited_area[x][y]:
                 continue
             elif game[x, y] != player:

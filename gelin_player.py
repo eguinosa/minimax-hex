@@ -51,9 +51,13 @@ def heuristic(game, player):
     """
     Heuristic Based on how much distance from one side to the other
     the player has covered.
+    - Min value: -1
+    - Max value: 1
     """
     enemy = 'B' if player == 'W' else 'W'
     player_groups = Groups(game, player)
     enemy_groups = Groups(game, enemy)
-    result = player_groups.max_length - enemy_groups.max_length
+    # Divides the difference between the two players by the game.size to keep
+    # the result between -1 and 1.
+    result = (player_groups.max_length - enemy_groups.max_length) / game.size
     return result

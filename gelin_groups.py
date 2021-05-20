@@ -1,9 +1,7 @@
 # Gelin Eguinosa Rosique
 
-import tourney
 from gelin_group import connected_group
-
-# # Testing the Code:
+# Testing the Code:
 from game_logic import Game
 
 
@@ -20,12 +18,14 @@ class Groups:
         self.game = game
         self.player = player
         self.groups = self.__search_groups()
-        self.max_group, self.max_length = self.__length()
+        max_group, max_length = self.__length()
+        self.max_group = max_group
+        self.max_length = max_length
 
     def __search_groups(self):
         """Looks in the map to form the groups of the stones the player has."""
         groups = []
-        search_map = [[False] * tourney.SIZE for _ in range(tourney.SIZE)]
+        search_map = [[False] * self.game.size for _ in range(self.game.size)]
         # Flag to continue looking for groups in the map:
         continue_search = True
         while continue_search:
@@ -59,4 +59,4 @@ if __name__ == '__main__':
 
     the_groups = Groups(game4, 'B')
     print(the_groups.groups)
-    print(the_groups.length)
+    print(the_groups.max_length)
