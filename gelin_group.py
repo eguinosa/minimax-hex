@@ -12,10 +12,81 @@ class Group:
         self.positions = positions
         self.game = game
         self.player = player
+        # Checking the length of the group
         min_pos, max_pos, group_length = self.__length()
         self.min_pos = min_pos
         self.max_pos = max_pos
         self.length = group_length
+
+    def on_min_edge(self):
+        """Determine if the player has reach the minimum edge of the board"""
+        if self.player == 'W':
+            y = self.min_pos[1]
+            result = y == 0
+        else:  # self.payer == 'B'
+            x = self.min_pos[0]
+            result = x == 0
+        return result
+
+    def on_max_edge(self):
+        """Determine if the player has reach the maximum edge of the board"""
+        if self.player == 'W':
+            y = self.min_pos[1]
+            top_edge = self.game.size - 1
+            result = y == top_edge
+        else:  # self.player == 'B'
+            x = self.min_pos[0]
+            top_edge = self.game.size - 1
+            result = x == top_edge
+        return result
+
+    def empty_neighbours(self):
+        """Look for all the empty cells that are next to the stones of the group"""
+        result_neighbours = []
+        search_map = [[False] * self.game.size for _ in range(self.game.size)]
+        for position in self.positions:
+            x = position[0]
+            y = position[1]
+            search_map[x][y] = True
+            for nx, ny in self.game.neighbour(x, y):
+                if search_map[nx][ny]:
+                    continue
+                search_map[nx][ny] = True
+                if self.game[nx, ny] == '.':
+                    result_neighbours.append((nx, ny))
+        # Sort the neighbours depending on how much they get closer the player to the edges
+        result_neighbours.sort(key=lambda pos: self.__pos_advantage(pos))
+        return result_neighbours
+
+    def __pos_advantage(self, pos):
+        """
+        Gives a value determining how good would it be to play in this position of the board
+        for the player.
+        -1: if it expands the group one step
+        0: if it is in the edge of the group
+        positive number: if it is inside the edges of the group
+        """
+        if self.player == 'W':
+            y = pos[1]
+            min_y = self.min_pos[1]
+            max_y = self.max_pos[1]
+            if y < min_y or y > max_y:
+                return -1
+            if y == min_y or y == max_y:
+                return 0
+            distance_to_edge = max(y-min_y, max_y - y)
+            return distance_to_edge
+        # self.player == 'B'
+        x = pos[0]
+        min_x = self.min_pos[0]
+        max_x = self.max_pos[0]
+        if x < min_x or x > max_x:
+            return -1
+        if x == min_x or x == max_x:
+            return 0
+        distance_to_edge = max(x - min_x, max_x - x)
+        return distance_to_edge
+
 
     def __length(self):
         """

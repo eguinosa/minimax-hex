@@ -58,5 +58,10 @@ if __name__ == '__main__':
     game4.board[3][3] = 'B'
 
     the_groups = Groups(game4, 'B')
+    group0 = the_groups.groups[0]
+    group1 = the_groups.groups[1]
+    group2 = the_groups.groups[2]
+    neigh0 = group0.empty_neighbours()
+    neigh2 = group2.empty_neighbours()
     print(the_groups.groups)
     print(the_groups.max_length)
