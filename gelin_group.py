@@ -11,7 +11,7 @@ class Group:
         self.positions = positions
         self.game = game
         self.player = player
-        self.length = self.__length()
+        self.min_pos, self.max_pos, self.length = self.__length()
 
     def __length(self):
         """
@@ -24,13 +24,13 @@ class Group:
             y_min = min(self.positions, key=lambda pos: pos[1])
             y_max = max(self.positions, key=lambda pos: pos[1])
             y_length = y_max[1] - y_min[1] + 1
-            return y_length
+            return y_min, y_max, y_length
 
         # self.player == 'B'
         x_min = min(self.positions, key=lambda pos: pos[0])
         x_max = max(self.positions, key=lambda pos: pos[0])
         x_length = x_max[0] - x_min[0] + 1
-        return x_length
+        return x_min, x_max, x_length
 
 
 def connected_group(game, player, visited_area):
@@ -78,4 +78,3 @@ def connected_group(game, player, visited_area):
     found_group = True
     result_group = Group(positions, game, player)
     return found_group, result_group
-

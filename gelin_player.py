@@ -7,7 +7,7 @@
 from game_logic import *
 from minimax import minimax
 
-from groups import Groups
+from gelin_groups import Groups
 
 # game_logic
 #
@@ -55,5 +55,5 @@ def heuristic(game, player):
     enemy = 'B' if player == 'W' else 'W'
     player_groups = Groups(game, player)
     enemy_groups = Groups(game, enemy)
-    result = player_groups.length - enemy_groups.length
+    result = player_groups.max_length - enemy_groups.max_length
     return result

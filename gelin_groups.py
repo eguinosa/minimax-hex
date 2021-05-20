@@ -1,10 +1,10 @@
 # Gelin Eguinosa Rosique
 
 import tourney
-from group import connected_group
+from gelin_group import connected_group
 
 # # Testing the Code:
-# from game_logic import Game
+from game_logic import Game
 
 
 class Groups:
@@ -20,7 +20,7 @@ class Groups:
         self.game = game
         self.player = player
         self.groups = self.__search_groups()
-        self.length = self.__length()
+        self.max_group, self.max_length = self.__length()
 
     def __search_groups(self):
         """Looks in the map to form the groups of the stones the player has."""
@@ -40,25 +40,23 @@ class Groups:
         if self.groups:
             max_group = max(self.groups, key=lambda x: x.length)
             max_length = max_group.length
-            return max_length
+            return max_group, max_length
         # No groups found:
         return 0
 
 
-# if __name__ == '__main__':
-#     game4 = Game(4)
-#     game4.board[1][0] = 'B'
-#     game4.board[0][1] = 'B'
-#     game4.board[3][0] = 'B'
-#     game4.board[2][1] = 'B'
-#     game4.board[1][2] = 'B'
-#     game4.board[0][3] = 'B'
-#     game4.board[3][2] = 'B'
-#     game4.board[2][3] = 'B'
-#     game4.board[3][3] = 'B'
-#
-#     the_groups = Groups(game4, 'W')
-#     print(the_groups.groups)
-#     print(the_groups.length)
+if __name__ == '__main__':
+    game4 = Game(4)
+    game4.board[1][0] = 'B'
+    game4.board[0][1] = 'B'
+    game4.board[3][0] = 'B'
+    game4.board[2][1] = 'B'
+    game4.board[1][2] = 'B'
+    game4.board[0][3] = 'B'
+    game4.board[3][2] = 'B'
+    game4.board[2][3] = 'B'
+    game4.board[3][3] = 'B'
 
-
+    the_groups = Groups(game4, 'B')
+    print(the_groups.groups)
+    print(the_groups.length)
