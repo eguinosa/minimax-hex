@@ -3,6 +3,7 @@
 #               that receives a game and return a tuple of
 #               two integers who represent a valid move on
 #               the game.
+from math import sqrt
 
 from game_logic import *
 from minimax import minimax
@@ -41,10 +42,44 @@ def play(game, player):
 
 
 def moves(game, player):
+    """
+    Return a list of all the empty positions sorted by the
+    convenience of the move.
+    """
+    player_groups = Groups(game, player)
+    group_moves = player_groups.empty_neighbours()
+    group_moves = group_moves[:6] if len(group_moves) > 6 else group_moves
+    empty_moves = empty_pos(game, player)
+    for x, y in group_moves:
+        yield x, y
+    for x, y in empty_moves:
+        if (x, y) in group_moves:
+            continue
+        yield x, y
+
+
+def empty_pos(game, player):
+    """
+    Return the list of empty positions in the board, sorted by how close
+    they are to the center.
+    """
+    result_pos = []
     for x in range(game.size):
         for y in range(game.size):
             if game[x, y] == EMPTY:
-                yield x, y
+                result_pos.append((x, y))
+    # Sort the positions depending on how close they are to the middle
+    result_pos.sort(key=lambda pos: distance_to_middle(pos, game.size))
+    return result_pos
+
+
+def distance_to_middle(pos, size):
+    x = pos[0]
+    y = pos[1]
+    middle_x = (size - 1) / 2
+    middle_y = middle_x
+    dist = sqrt((middle_x - x) ** 2 + (middle_y - y) ** 2)
+    return dist
 
 
 def heuristic(game, player):
