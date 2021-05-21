@@ -19,28 +19,6 @@ class Group:
         self.max_pos = max_pos
         self.length = group_length
 
-    def on_min_edge(self):
-        """Determine if the player has reach the minimum edge of the board"""
-        if self.player == 'W':
-            y = self.min_pos[1]
-            result = y == 0
-        else:  # self.payer == 'B'
-            x = self.min_pos[0]
-            result = x == 0
-        return result
-
-    def on_max_edge(self):
-        """Determine if the player has reach the maximum edge of the board"""
-        if self.player == 'W':
-            y = self.min_pos[1]
-            top_edge = self.game.size - 1
-            result = y == top_edge
-        else:  # self.player == 'B'
-            x = self.min_pos[0]
-            top_edge = self.game.size - 1
-            result = x == top_edge
-        return result
-
     def empty_neighbours(self):
         """Look for all the empty cells that are next to the stones of the group"""
         result_neighbours = []
@@ -87,7 +65,6 @@ class Group:
             return 0
         distance_to_edge = max(x - min_x, max_x - x)
         return distance_to_edge
-
 
     def __length(self):
         """

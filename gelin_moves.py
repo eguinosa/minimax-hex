@@ -37,6 +37,7 @@ def empty_pos(game):
 
 
 def distance_to_middle(pos, size):
+    """Return how far is the given position from the middle of the board."""
     x = pos[0]
     y = pos[1]
     middle_x = (size - 1) / 2

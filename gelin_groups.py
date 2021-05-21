@@ -2,8 +2,6 @@
 # C-511
 
 from gelin_group import connected_group
-# Testing the Code:
-from game_logic import Game
 
 
 class Groups:
@@ -24,6 +22,10 @@ class Groups:
         self.max_length = max_length
 
     def empty_neighbours(self):
+        """
+        Return the empty positions around the biggest group of stones
+        in the board.
+        """
         if self.max_group:
             result = self.max_group.empty_neighbours()
         else:  # self.max_group == None
@@ -45,32 +47,13 @@ class Groups:
         return groups
 
     def __max_length_group(self):
+        """
+        Looks for the most expanded group of stones,
+        and returns it with its length.
+        """
         if self.groups:
             max_group = max(self.groups, key=lambda x: x.length)
             max_length = max_group.length
             return max_group, max_length
         # No groups found:
         return None, None
-
-
-if __name__ == '__main__':
-    game4 = Game(4)
-    game4.board[1][0] = 'B'
-    game4.board[0][1] = 'B'
-    game4.board[3][0] = 'B'
-    game4.board[2][1] = 'B'
-    game4.board[1][2] = 'B'
-    game4.board[0][3] = 'B'
-    game4.board[3][2] = 'B'
-    game4.board[2][3] = 'B'
-    game4.board[3][3] = 'B'
-
-    the_groups = Groups(game4, 'B')
-    group0 = the_groups.groups[0]
-    group1 = the_groups.groups[1]
-    group2 = the_groups.groups[2]
-    neigh0 = group0.empty_neighbours()
-    neigh2 = group2.empty_neighbours()
-    neighbours = the_groups.empty_neighbours()
-    print(the_groups.groups)
-    print(the_groups.max_length)

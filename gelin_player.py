@@ -3,13 +3,6 @@
 #               that receives a game and return a tuple of
 #               two integers who represent a valid move on
 #               the game.
-# from math import sqrt
-# from game_logic import *
-
-# from minimax import minimax
-# from gelin_minimax import heuristic
-
-from gelin_minimax import alpha_beta
 
 # game_logic
 #
@@ -34,9 +27,15 @@ from gelin_minimax import alpha_beta
 #       for nx, ny in game.neighbour(x, y):
 #           print(nx, ny)
 
+# Gelin Eguinosa Rosique
+# C-511
+
+from gelin_minimax import alpha_beta
+
 
 def play(game, player):
-    # Code Here
-    # Random player implementation (just delete it)
-    # return minimax(game, player, 3, heuristic, moves)
+    """
+    Calls the alpha-beta method to find the best
+    possible move for the player.
+    """
     return alpha_beta(game, player, 3)
