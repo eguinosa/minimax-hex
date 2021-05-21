@@ -1,4 +1,5 @@
 # Gelin Eguinosa Rosique
+# C-511
 
 class Group:
     """Class to represent a group of stone with the same color"""
